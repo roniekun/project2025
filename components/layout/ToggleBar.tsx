@@ -4,7 +4,7 @@ import MenuItems from "../utils/MenuItems";
 import LinkItems from "../utils/LinkItems";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { useAppDispatch, useAppSelector } from "@/store/hooks/hooks";
+import { useAppSelector } from "@/store/hooks/hooks";
 
 const ToggleBar = () => {
   const isOpen = useAppSelector((state) => state.menu.isMenuOpen);
@@ -33,7 +33,7 @@ const ToggleBar = () => {
         <MenuItems />
       </div>
       <div className="flex gap-4 absolute bottom-0 mb-10">
-        <LinkItems  />
+        <LinkItems />
       </div>
     </div>
   );

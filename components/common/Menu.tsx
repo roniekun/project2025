@@ -7,7 +7,7 @@ import { Fade as Hamburger } from 'hamburger-react'
 const Menu = () => {
   const dispatch = useAppDispatch();
   const isOpen = useAppSelector((state) => state.menu.isMenuOpen);
-  const deviceType = useAppSelector((state) => state.device.deviceType);
+  // const deviceType = useAppSelector((state) => state.device.deviceType);
 
   const handleClick = () => {
     dispatch(toggleMenu());
