@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks/hooks";
-import { setToggleMenu, toggleMenu } from "@/store/slices/MenuSlice";
+import { toggleMenu } from "@/store/slices/MenuSlice";
 import { Fade as Hamburger } from 'hamburger-react'
 
 const Menu = () => {

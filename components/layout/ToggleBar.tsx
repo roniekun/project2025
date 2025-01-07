@@ -9,7 +9,6 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks/hooks";
 const ToggleBar = () => {
   const isOpen = useAppSelector((state) => state.menu.isMenuOpen);
   const deviceType = useAppSelector((state) => state.device.deviceType);
-  const dispatch = useAppDispatch();
 
   const target = useRef<HTMLDivElement | null>(null);
   useEffect(() => {

@@ -1,10 +1,8 @@
 "use client";
-import gsap from "gsap";
 import MenuItems from "../utils/MenuItems";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "@/store/hooks/hooks";
-import { setToggleMenu, toggleMenu } from "@/store/slices/MenuSlice";
-import { twMerge } from "tailwind-merge";
+import { setToggleMenu} from "@/store/slices/MenuSlice";
 
 const Navbar = () => {
   const deviceType = useAppSelector((state) => state.device.deviceType);
