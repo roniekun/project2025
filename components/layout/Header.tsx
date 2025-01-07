@@ -1,6 +1,6 @@
 import React from "react";
+import Logo from "../common/ui/Logo";
 import Menu from "../common/Menu";
-import Logo from "../logo/Logo";
 
 const Header: React.FC = () => {
   return (
