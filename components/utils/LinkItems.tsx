@@ -16,7 +16,13 @@ const LinkItems: React.FC<LinkItemsProps> = ({ className }) => {
   return (
     <>
       {links.map((link, idx) => (
-        <Link className={twMerge(className)} key={idx} href={link.path}>
+        <Link
+          className={twMerge(className)}
+          target="blank"
+          key={idx}
+          rel="noopener noreferrer"
+          href={link.path}
+        >
           {link.name}
         </Link>
       ))}

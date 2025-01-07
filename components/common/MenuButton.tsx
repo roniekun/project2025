@@ -25,7 +25,8 @@ const Menu = () => {
           className="md:hidden cursor-pointer opacity-0"
           onClick={handleClick}
         > 
-          <Hamburger size={20} color={isOpen? "whitesmoke": "black"} duration={.5} toggled={isOpen} />
+          <Hamburger size={20} color={isOpen? "whitesmoke": "black"} 
+          duration={.5} toggled={isOpen} />
         </motion.button>
       )}
     </>
