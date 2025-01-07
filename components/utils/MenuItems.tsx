@@ -3,8 +3,14 @@ import Link from "next/link";
 import { useAppSelector } from "@/store/hooks/hooks";
 import { setToggleMenu } from "@/store/slices/MenuSlice";
 import { useAppDispatch } from "@/store/hooks/hooks";
+import { twMerge } from "tailwind-merge";
+import { usePathname } from "next/navigation";
 
-const MenuItems = () => {
+interface MenuItemsProps {
+  className?: string;
+}
+
+const MenuItems: React.FC<MenuItemsProps> = ({ className }) => {
   const dispatch = useAppDispatch();
   const deviceType = useAppSelector((state) => state.device.deviceType);
   const links = [
@@ -18,11 +24,20 @@ const MenuItems = () => {
       dispatch(setToggleMenu(false));
     }
   };
+  const pathname = usePathname();
 
   return (
     <>
       {links.map((link, idx) => (
-        <Link onClick={handleClick} key={idx} href={link.path}>
+        <Link
+          className={twMerge(
+            className,
+            pathname === link.path && "text-violet-500"
+          )}
+          onClick={handleClick}
+          key={idx}
+          href={link.path}
+        >
           {link.name}
         </Link>
       ))}

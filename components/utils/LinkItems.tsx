@@ -1,7 +1,12 @@
 import React from "react";
 import Link from "next/link";
+import { twMerge } from "tailwind-merge";
 
-const LinkItems = () => {
+interface LinkItemsProps {
+  className?: string;
+}
+
+const LinkItems: React.FC<LinkItemsProps> = ({ className }) => {
   const links = [
     { name: "Facebook", path: "https://www.facebook.com" },
     { name: "Instagram", path: "https://www.instagram.com" },
@@ -11,12 +16,12 @@ const LinkItems = () => {
   return (
     <>
       {links.map((link, idx) => (
-        <Link key={idx} href={link.path}>
+        <Link className={twMerge(className)} key={idx} href={link.path}>
           {link.name}
         </Link>
       ))}
     </>
   );
-}
+};
 
 export default LinkItems;
