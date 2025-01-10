@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks/hooks";
 import { setDeviceType } from "@/store/slices/DeviceSlice";
 
-const DeviceListener = ({ children }: { children: React.ReactNode }) => {
+const DeviceListener = () => {
   const dispatch = useAppDispatch();
   const isOpen = useAppSelector((state) => state.menu.isMenuOpen);
 
@@ -18,14 +18,6 @@ const DeviceListener = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
-  const target = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (target.current) {
-      target.current.style.overflow = isOpen ? "hidden" : "auto";
-    }
-  }, [isOpen, target]);
-
   useEffect(() => {
     updateDeviceType();
     window.addEventListener("resize", updateDeviceType);
@@ -34,6 +26,6 @@ const DeviceListener = ({ children }: { children: React.ReactNode }) => {
     };
   }, []);
 
-  return <div ref={target}>{children}</div>;
+  return null;
 };
 export default DeviceListener;

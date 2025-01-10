@@ -1,9 +1,10 @@
 "use client";
 import React from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks/hooks";
-import { toggleMenu } from "@/store/slices/MenuSlice";
+import { toggleMenu, setToggleMenu } from "@/store/slices/MenuSlice";
 import { Fade as Hamburger } from "hamburger-react";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 const Menu = () => {
   const dispatch = useAppDispatch();
@@ -13,7 +14,13 @@ const Menu = () => {
   const handleClick = () => {
     dispatch(toggleMenu());
     console.log("Menu clicked, isOpen:", isOpen);
+
   };
+
+  useEffect(() => {
+    dispatch(setToggleMenu(false))
+  }, [deviceType])
+  
 
   return (
     <>
@@ -21,12 +28,12 @@ const Menu = () => {
         <motion.button
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="md:hidden cursor-pointer opacity-0"
+         
+          className="md:hidden cursor-pointer relative opacity-0"
           onClick={handleClick}
         > 
-          <Hamburger size={20} color={isOpen? "whitesmoke": "black"} 
-          duration={.5} toggled={isOpen} />
+          <Hamburger size={20} 
+          duration={.1} toggled={isOpen}  />
         </motion.button>
       )}
     </>

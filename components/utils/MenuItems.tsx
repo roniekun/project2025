@@ -14,9 +14,13 @@ const MenuItems: React.FC<MenuItemsProps> = ({ className }) => {
   const dispatch = useAppDispatch();
   const deviceType = useAppSelector((state) => state.device.deviceType);
   const links = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Contact", path: "/contact" },
+    { name: "For You", path: "/for_you" },
+    { name: "Discover", path: "/discover" },
+    { name: "Manage your account", path: "/account" },
+    { name: "Settings", path: "/settings" },
+    
+  
+    
   ];
 
   const handleClick = () => {

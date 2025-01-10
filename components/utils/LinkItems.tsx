@@ -17,7 +17,7 @@ const LinkItems: React.FC<LinkItemsProps> = ({ className }) => {
     <>
       {links.map((link, idx) => (
         <Link
-          className={twMerge(className)}
+          className={twMerge(className,"flex-1")}
           target="blank"
           key={idx}
           rel="noopener noreferrer"

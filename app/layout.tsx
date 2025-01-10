@@ -4,7 +4,6 @@ import "./globals.css";
 import StateProvider from "@/provider/StateProvider";
 import ToggleBar from "@/components/layout/ToggleBar";
 import Header from "@/components/layout/Header";
-import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
 const geistSans = Geist({
@@ -27,25 +26,24 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-  const textColor: string = "black" 
+  const textColor: string = "black";
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <StateProvider>
-          <main 
-          style={{color: textColor}} className="flex flex-col min-h-screen w-screen bg-neutral-50">
-            <div className="flex p-4 w-full fixed top-0 z-50 items-center justify-between">
+          <main
+            style={{ color: textColor }}
+            className="flex flex-col min-h-screen min-w-screen overflow-hidden bg-neutral-50"
+          >
+            <div className="flex  w-full fixed top-0 z-50 items-center justify-between">
               <Header />
-              <Navbar />
               <ToggleBar />
             </div>
             {children}
-            <section className="w-full flex justify-center items-center py-28 bg-violet-500 text-white">
- 
-            <Footer />
+            <section className="w-full flex justify-center items-center py-28 bg-indigo-500 text-white">
+              <Footer />
             </section>
           </main>
         </StateProvider>
