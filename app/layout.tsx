@@ -42,7 +42,7 @@ export default function RootLayout({
               <ToggleBar />
             </div>
             {children}
-            <section className="w-full flex justify-center items-center py-28 bg-indigo-500 text-white">
+            <section className="w-full flex justify-center items-center py-28 bg-zinc-950 text-white">
               <Footer />
             </section>
           </main>

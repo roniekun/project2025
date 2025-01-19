@@ -11,6 +11,7 @@ import Search from "../common/ui/Search";
 import { useAppSelector } from "@/store/hooks/hooks";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import SearchButton from "../common/buttons/SearchButton";
 
 const Header: React.FC = () => {
   const isLogin = true;
@@ -55,8 +56,12 @@ const Header: React.FC = () => {
       style={{ color: "white" }}
       className="flex p-4 h-[3rem] shadow-md top-0 gap-4 z-50 sticky w-full items-center justify-between"
     >
-      <Logo />
-      {deviceType !== "smartphone" ? renderDesktopContent() : <Menu />}
+      <div className="flex justify-center items-center">
+        <Menu />
+        <Logo />
+      </div>
+
+      {deviceType !== "smartphone" ? renderDesktopContent(): <SearchButton/> }
     </header>
   );
 };

@@ -11,16 +11,13 @@ const Menu = () => {
   const isOpen = useAppSelector((state) => state.menu.isMenuOpen);
   const deviceType = useAppSelector((state) => state.device.deviceType);
 
-  const handleClick = () => {
+  const handleToggle = () => {
     dispatch(toggleMenu());
-    console.log("Menu clicked, isOpen:", isOpen);
-
   };
 
   useEffect(() => {
-    dispatch(setToggleMenu(false))
-  }, [deviceType])
-  
+    dispatch(setToggleMenu(false));
+  }, [deviceType]);
 
   return (
     <>
@@ -28,12 +25,14 @@ const Menu = () => {
         <motion.button
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-         
           className="md:hidden cursor-pointer relative opacity-0"
-          onClick={handleClick}
-        > 
-          <Hamburger size={20} 
-          duration={.1} toggled={isOpen}  />
+        >
+          <Hamburger
+            onToggle={handleToggle}
+            size={18}
+            duration={0.1}
+            toggled={isOpen}
+          />
         </motion.button>
       )}
     </>

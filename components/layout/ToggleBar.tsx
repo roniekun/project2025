@@ -6,7 +6,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useAppSelector } from "@/store/hooks/hooks";
-import { nav } from "framer-motion/client";
+
 
 const ToggleBar = () => {
   const isOpen = useAppSelector((state) => state.menu.isMenuOpen);
@@ -27,7 +27,7 @@ const ToggleBar = () => {
           gsap.to(target.current, {
             ease: "power1.out",
             duration: 0.3,
-            x: "100%",
+            x: "-100%",
             onComplete: () => {
               gsap.set(navRef.current, { display: "none" });
             },
@@ -47,7 +47,7 @@ const ToggleBar = () => {
     <nav ref={navRef} className="w-screen h-screen hidden bg-opacity-35 duration-300  bg-black fixed top-0">
       <div
         ref={target}
-        className="flex-col pt-20 shadow-md rounded-l-sm bg-neutral-600 lg:hidden z-30 md:hidden flex gap-4 fixed transform duration-0 right-0 top-0 translate-x-[100%] h-screen w-[15rem] items-start justify-start p-[5vw]"
+        className="flex-col pt-20 shadow-md rounded-l-sm bg-neutral-600 lg:hidden z-30 md:hidden flex gap-4 fixed transform duration-0 left-0 top-0 -translate-x-[100%] h-screen w-[15rem] items-start justify-start p-[5vw]"
       >
         <div className="flex flex-col gap-4 ">
           <MenuItems className="font-medium text-2xl text-neutral-100 hover:text-neutral-700" />
