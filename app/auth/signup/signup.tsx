@@ -8,14 +8,11 @@ const SignUpForm: React.FC = () => {
   const labelStyle = "font-medium";
   const inputStyle = "w-full flex-1 p-2 rounded-md";
 
-  const [state, action, pending] = useActionState(signup);
+  // const [state, action, pending] = useActionState(signup);
 
   return (
-    <form
-      action={action}
-      className="flex w-full relative flex-col bg-zinc-100 gap-4 p-4 justify-center items-center sm:w-[500px] py-20 rounded-md"
-    >
-      <div className="container gap-1 grid grid-cols-2">
+    <form className="flex w-full max-w-[500px]  relative flex-col bg-zinc-100 gap-4 p-4 justify-center items-center py-10 rounded-md ">
+      <div className="container gap-2 grid grid-cols-2">
         <div>
           {" "}
           <label className={labelStyle} htmlFor="name">

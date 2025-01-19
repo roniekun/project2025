@@ -5,8 +5,8 @@ import Menu from "../common/buttons/MenuButton";
 import UserProfile from "../common/ui/UserProfile";
 import MessagesButton from "../common/buttons/InboxButton";
 import NotificationsButton from "../common/buttons/NotificationsButton";
-import LoginButton from "../common/buttons/LoginButton";
-import SignInButton from "../common/buttons/SignInButton";
+import LoginLink from "../common/buttons/LoginLink";
+import SignUpLink from "../common/buttons/SignUpLink";
 import Search from "../common/ui/Search";
 import { useAppSelector } from "@/store/hooks/hooks";
 import { useEffect, useRef } from "react";
@@ -14,7 +14,8 @@ import gsap from "gsap";
 import SearchButton from "../common/buttons/SearchButton";
 
 const Header: React.FC = () => {
-  const isLogin = true;
+  const isLogin = false;
+  const session = false;
   const deviceType = useAppSelector((state) => state.device.deviceType);
   const scrollPosition = useAppSelector((state) => state.scroll.scrollPosition);
 
@@ -32,6 +33,7 @@ const Header: React.FC = () => {
   }, [scrollPosition]);
 
   const renderDesktopContent = () => {
+
     if (isLogin) {
       return (
         <div className="flex items-center gap-4">
@@ -43,10 +45,14 @@ const Header: React.FC = () => {
       );
     }
     return (
-      <div className="flex items-center gap-2">
-        <LoginButton />
-        <SignInButton />
-      </div>
+      <>
+        {!session && (
+          <div className="flex items-center gap-2 font-semibold">
+            <LoginLink />
+            <SignUpLink />
+          </div>
+        )}
+      </>
     );
   };
 
@@ -61,7 +67,7 @@ const Header: React.FC = () => {
         <Logo />
       </div>
 
-      {deviceType !== "smartphone" ? renderDesktopContent(): <SearchButton/> }
+      {deviceType !== "smartphone" ? renderDesktopContent() : <SearchButton />}
     </header>
   );
 };

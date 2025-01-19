@@ -4,7 +4,11 @@ import Link from "next/link";
 const Login = () => {
   const inputStyle = "outline-black  p-4  bg-zinc-100 rounded-md";
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="h-screen flex justify-center items-center flex-col">
+
+      {"sign in with email"}
+      {"sign in with google"}
+      {"sign in with others"}
       <form className="flex flex-col  gap-1 min-w-[200px]" action="">
         <input placeholder="username" className={inputStyle} type="text" />
         <input placeholder="password" className={inputStyle} type="password" />
@@ -22,6 +26,10 @@ const Login = () => {
           Create an account
         </Link>
       </form>
+
+      <p>or</p>
+
+      <p className="p-4 border rounded-md">Sign in with Google</p>
     </div>
   );
 };
