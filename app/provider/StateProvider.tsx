@@ -5,13 +5,12 @@ import DeviceListener from "@/app/utils/DeviceListener";
 import ScrollListener from "@/app/utils/ScrollListener";
 import { SessionProvider } from "next-auth/react";
 
-
 const StateProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <Provider store={store}>
       <ScrollListener />
-      <DeviceListener/>
-      
+      <DeviceListener />
+
       <SessionProvider>{children}</SessionProvider>
     </Provider>
   );

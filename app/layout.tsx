@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import StateProvider from "@/provider/StateProvider";
-import ToggleBar from "@/components/layout/ToggleBar";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import StateProvider from "@/app/provider/StateProvider";
+import ToggleBar from "./components/layout/ToggleBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,16 +33,12 @@ export default function RootLayout({
         <StateProvider>
           <main
             style={{ color: textColor }}
-            className="flex flex-col min-h-screen min-w-screen overflow-hidden bg-neutral-50"
+            className="flex flex-col min-h-screen min-w-screen overflow-hidden bg-neutral-50 selection:bg-yellow-200"
           >
             <div className="flex  w-full fixed top-0 z-50 items-center justify-between">
-              <Header />
               <ToggleBar />
             </div>
             {children}
-            <section className="w-full flex justify-center items-center py-28 bg-zinc-950 text-white">
-              <Footer />
-            </section>
           </main>
         </StateProvider>
       </body>
