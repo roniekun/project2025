@@ -13,7 +13,7 @@ const loadInitialState = () => {
     }
   }
 };
-localStorage.clear();
+
 const initialState: string[] = loadInitialState() || [];
 
 const checkoutSlice = createSlice({
@@ -26,19 +26,26 @@ const checkoutSlice = createSlice({
       if (!existingID) {
         state.push(action.payload);
       }
+      localStorage.setItem("selected-item", JSON.stringify(state));
     },
 
     deselectItems: (state, action: PayloadAction<string>) => {
-      return state.filter((item) => item !== action.payload);
+      const newState = state.filter((item) => item !== action.payload);
+      localStorage.setItem("selected-item", JSON.stringify(newState));
+      return newState;
     },
 
     selectAllItems: (state, action: PayloadAction<string[]>) => {
       const newItems = action.payload.filter((item) => !state.includes(item));
       state.push(...newItems);
+      localStorage.setItem("selected-item", JSON.stringify(state));
     },
 
     deselectAllItems: (state) => {
-      return [];
+      const newState = [] as string[];
+      localStorage.setItem("selected-item", JSON.stringify(newState));
+
+      return newState;
     },
   },
 });

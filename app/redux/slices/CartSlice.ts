@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { countError } from "../lib/countError";
 
-
 export interface CartItemProps {
   id: string;
   product: string;
@@ -50,7 +49,7 @@ const cartSlice = createSlice({
     addCount: (state, action: PayloadAction<string>) => {
       const item = state.find((item) => item.id === action.payload);
       if (item) {
-        item.quantity = item.quantity += 1;
+        item.quantity += 1;
         item.price = item.basePrice * item.quantity;
         const error = countError(item.quantity, item.maxQuantity);
         item.error = error?.isError;
@@ -78,15 +77,13 @@ const cartSlice = createSlice({
       const item = state.find((item) => item.id === action.payload);
       if (!item || item.quantity <= 0) return;
 
-      item.quantity -= 1;
+      item.quantity = item.quantity - 1;
       item.price = item.basePrice * item.quantity;
-
       const error = countError(item.quantity, item.maxQuantity);
       item.error = error?.isError;
       item.errMessage = error?.errMessage;
       localStorage.setItem("cartItem", JSON.stringify(state));
     },
-  
   },
 });
 
@@ -96,6 +93,5 @@ export const {
   addCount,
   reduceCount,
   addCustomCount,
-
 } = cartSlice.actions;
 export default cartSlice.reducer;
